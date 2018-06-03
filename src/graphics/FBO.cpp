@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "FBO.h"
 #define COLOR_BUFFER 0
 #define DEPTH_BUFFER 1
@@ -11,7 +11,6 @@ FBO::FBO(int type, int width, int height) : type(type), width(width), height(hei
     if (type == COLOR_BUFFER) {
         glDrawBuffer(GL_COLOR_ATTACHMENT0);
         createTexture();
-        createDepthBuffer();
     } else if (type == DEPTH_BUFFER) {
         glDrawBuffer(GL_NONE);
         glReadBuffer(GL_NONE);

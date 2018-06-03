@@ -1,21 +1,7 @@
 #include "Game.h"
-#include "loaders/TextureLoader.h"
-#include "loaders/MaterialLoader.h"
-#include "loaders/OBJLoader.h"
-#include "graphics/FBO.h"
-#include "math/matrices/Mat4.h"
-#include "math/vectors/Vec3.h"
 #include "loaders/SceneLoader.h"
-#include "shadowbox/ShadowBox.h"
-#include "graphics/renderers/ShadowRenderer.h"
-#include "terrain/Terrain.h"
-#include "terrain/water/Water.h"
-#include "skybox/Skybox.h"
 #include "terrain/TerrainGenerator.h"
 #include "terrain/water/WaterGenerator.h"
-#include "postprocessing/PostProcessor.h"
-#include <cmath>
-#include <vector>
 
 Game::Game() :
         camera(70.f * ((float)M_PI / 180.f), 0.1f, 1000.0f, devices.window.aspectRatio()),
@@ -166,6 +152,7 @@ void Game::prepareRenderers() {
     postProcessor.prepare();
 }
 
+// TODO: Create a proper ShadowRenderer class
 void Game::renderShadows(ShaderProgram &shadowProgram, ShaderProgram &entityProgram, Terrain& terrain) {
     shadowProgram.start();
     shadowRenderer.update(camera, directional.direction);
@@ -179,6 +166,7 @@ void Game::renderShadows(ShaderProgram &shadowProgram, ShaderProgram &entityProg
     shadowProgram.stop();
 }
 
+// TODO: Optional. Create a UIRenderer class which can take over the functionality of this method
 void Game::renderUserInterface(ShaderProgram &uiProgram) {
     uiProgram.start();
     uiProgram.set("aspectRatio", devices.window.aspectRatio());
@@ -186,6 +174,7 @@ void Game::renderUserInterface(ShaderProgram &uiProgram) {
     uiProgram.stop();
 }
 
+// TODO: Create a Player class which can process movement-related input.
 void Game::processInput() {
 
     float deltaTime = devices.timer.delta();

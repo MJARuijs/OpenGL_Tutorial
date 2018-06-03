@@ -2,6 +2,7 @@
 
 #include "../math/matrices/Mat4.h"
 
+// TODO: Make the Camera able to follow the Player in first or third person, or to detach and move freely through the world
 class Camera {
 
 private:

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Image.h"
-#include "../loaders/TextureLoader.h"
 
 #define ALIGN_TOP_LEFT  0
 #define ALIGN_BOTTOM_LEFT 1
@@ -111,5 +110,4 @@ void Image::destroy() {
     if (textured) {
         delete texture;
     }
-//    delete mesh;
 }
